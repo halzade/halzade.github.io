@@ -18,9 +18,21 @@ public class Application {
 	 * Change this if changes affects Files for Domain or Fractal
 	 */
 	public static final String VERSION = "v3";
+	public static final String USER_HOME = System.getProperty("user.home");
 
+	/**
+	 * To Render Images for a ZOOM Video.
+	 * 1.
+	 * set REPEAT = true
+	 * Don't use any fractals with optimization.
+	 * Try FineMandelbrotZoom()
+	 *
+	 * 2.
+	 * set DESIGN_STATIC = Boolean.FALSE;
+	 * To remember all the element paths calculated in the previous iterations
+	 */
 	public static boolean REPEAT = false;
-	public static final double ZOOM = 0.7; // 0.98 | 0.5
+	public static final double ZOOM = 0.7; // 0.98
 
 	private static Time time = new Time(Application.class);
 
@@ -49,8 +61,6 @@ public class Application {
 	// public static int FRACTAL_TOTAL_SIZE; // 1
 	// public static boolean SKIP_CALCULATION = false;
 
-
-	public static final String FILE_PATH = "/home/lukas/Fractals/";
 
 	public AreaDomain areaDomain;
 	public AreaImage areaImage;

@@ -27,7 +27,7 @@ public class FractalFiles {
 	private static boolean newDesign = false;
 
 	private static String fileDirectory() {
-		return Application.FILE_PATH
+		return Main.FILE_PATH
 				// Folder Name
 				+ Fractal.NAME + "_"
 				+ Application.VERSION + "_"

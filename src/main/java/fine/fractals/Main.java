@@ -18,6 +18,7 @@ public class Main {
 	 * Image resolution
 	 */
 	private static final int r = 800;
+	// private static final int r = 10000;
 
 	/**
 	 * Calculation points per pixel
@@ -25,10 +26,14 @@ public class Main {
 	 * Keep it odd, so that the center point is in the center of a pixel
 	 */
 	private static final int m = 1;
+	// private static final int m = 101;
 
-	// Try
-	// private static final int r = 9000;
-	// private static final int m = 41;
+	/**
+	 * Image in resolution Application.RESOLUTION_IMAGE_SAVE_FOR = 2000 will be saved to the location below
+	 *
+	 * Create the folder in your home directory or change the path
+	 */
+	public static final String FILE_PATH = Application.USER_HOME + "/Fractals/";
 
 
 	public static Palette colorPalette = new Palette3_RGB();

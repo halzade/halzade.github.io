@@ -1,6 +1,7 @@
 package fine.fractals.data.log;
 
 import fine.fractals.Application;
+import fine.fractals.Main;
 import fine.fractals.fractal.Fractal;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ public class Log {
 
 	static {
 		try {
-			FileHandler fileHandler = new FileHandler(Application.FILE_PATH + "/log/" + Fractal.NAME + "_" + Application.APP_NAME + ".log");
+			FileHandler fileHandler = new FileHandler(Main.FILE_PATH + "/log/" + Fractal.NAME + "_" + Application.APP_NAME + ".log");
 			fileHandler.setFormatter(new LogFormatter());
 			logger.addHandler(fileHandler);
 		} catch (IOException ioe) {

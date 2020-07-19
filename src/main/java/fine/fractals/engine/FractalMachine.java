@@ -53,7 +53,7 @@ public abstract class FractalMachine {
 			jpegParams.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
 			jpegParams.setCompressionQuality(0.98f);
 
-			String fileName = Application.FILE_PATH
+			String fileName = Main.FILE_PATH
 					+ Fractal.NAME + Application.APP_NAME
 					+ iteration()
 					+ "_" + Fractal.ITERATION_MAX

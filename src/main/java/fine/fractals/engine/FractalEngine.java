@@ -111,9 +111,9 @@ public class FractalEngine {
 			}
 		} catch (Exception e) {
 			time.e("calculateFromThread()", e);
-			time.red("---------------------------------------");
-			time.red("Images not saved, use 's' to save them.");
-			time.red("---------------------------------------");
+			time.red("-----------------------------------------");
+			time.red("Images not saved, press 's' to save them.");
+			time.red("-----------------------------------------");
 
 			Application.REPEAT = false;
 			e.printStackTrace();
