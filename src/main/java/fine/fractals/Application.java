@@ -28,8 +28,7 @@ public class Application {
 	 * Try FineMandelbrotZoom()
 	 *
 	 * 2.
-	 * set DESIGN_STATIC = Boolean.FALSE;
-	 * To remember all the element paths calculated in the previous iterations
+	 * set DESIGN_STATIC = Boolean.FALSE; To remember all the element paths calculated in the previous iterations
 	 */
 	public static boolean REPEAT = false;
 	public static final double ZOOM = 0.7; // 0.98

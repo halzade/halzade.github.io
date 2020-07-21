@@ -100,7 +100,7 @@ public class MandelbrotDomain {
 
 		for (t = partStartT; t < Application.RESOLUTION_DOMAIN_T; t++) {
 			for (int x = 0; x < Application.RESOLUTION_DOMAIN_X; x++) {
-				/* Go through domain and queue elements to be filtered by GPU */
+
 				elementZero = elementsScreen[t][x];
 
 				boolean isActive = elementZero != null && elementZero.isActiveAny();
@@ -117,13 +117,13 @@ public class MandelbrotDomain {
 						domainPart.add(elementZero);
 					}
 				} else {
-					/* Wrapping of first calculation*/
+					/* Wrapping of first calculation */
 					boolean shouldBeWrapped = elementZero != null;// && FractalMachine.someNeighboursFinishedInside(t, x, elementsScreen);
 					if (shouldBeWrapped) {
 						wrappedCount++;
-						elementZero.setMarked();
+
 						areaDomain.wrap(elementZero, wrapping);
-						// elementZero.setColor(FColor.MARK2);
+
 						for (Element el : wrapping) {
 							elementCountPart++;
 							domainPart.add(el);
@@ -157,9 +157,8 @@ public class MandelbrotDomain {
 					elementZero = elementsScreen[tt][xx];
 					if (elementZero != null && elementZero.isActiveRecalculate()) {
 						// don't set any state, will be set again properly by calculation
-						elementZero.setMarked();
+
 						areaDomain.wrap(elementZero, wrapping);
-						// elementZero.setColor(FColor.MARK2);
 						for (Element el : wrapping) {
 							reWrapped++;
 							domainPart.add(el);
@@ -282,8 +281,6 @@ public class MandelbrotDomain {
 		return (hhReT - hReT) * (hhReT - hReT) + (hhImX - hImX) * (hhImX - hImX);
 	}
 
-
-	// TODO improve for multiple points per pixel
 	public void createMask(BufferedImage maskImage) {
 		if (maskDone) {
 			maskDone = false;

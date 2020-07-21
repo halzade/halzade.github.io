@@ -238,7 +238,7 @@ public class AreaDomain {
 				for (int x = -half; x <= half; x++) {
 					if (t == 0 && x == 0) {
 						// This was already calculated without wrap
-						// wrapping[index++] = element;
+						wrapping[index++] = elementZero;
 					} else {
 						/** This only fills the pixel with multiple points */
 						double a = elementZero.originReT + (t * pn);
@@ -247,11 +247,6 @@ public class AreaDomain {
 					}
 				}
 			}
-			/* Add original (ALREADY CALCULATED) element to wrapping for coloring for calculation progress.
-			 * Calculation will be skipped. In PathThread
-			 */
-			elementZero.setMarked();
-			wrapping[index] = elementZero;
 		} else {
 			throw new RuntimeException("AreaDomain: RESOLUTION_MULTIPLIER can be only 1 or odd");
 		}

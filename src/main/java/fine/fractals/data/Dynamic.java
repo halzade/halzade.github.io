@@ -99,7 +99,7 @@ public class Dynamic {
 			originIm = element.originImX;
 			iterator = 0;
 
-            /* Original */
+			/* Original */
 			while (iterator < missing.iterateTo) {
 
 				// TODO
@@ -121,10 +121,11 @@ public class Dynamic {
 				missing.originPathRe.list().addAll(missingOriginPathRe);
 				missing.originPathIm.list().addAll(missingOriginPathIm);
 
-                /* Add missing to Fractal here */
-				time.now("* add path inside START");
-				// TODO this.addEscapePathInside(missing.originPathRe, missing.originPathIm);
-				time.now("* add path inside END");
+				/* Add missing to Fractal here */
+				// TODO
+				// time.now("* add path inside START");
+				// this.addEscapePathInside(missing.originPathRe, missing.originPathIm);
+				// time.now("* add path inside END");
 
 				addedMissingElements += missing.originPathRe.size();
 				addedMissingElementsTotal += addedMissingElements;
@@ -163,12 +164,12 @@ public class Dynamic {
 					this.areaImage.domainToScreenCarry(hh, re, im);
 
 					if (hh.calculation.pxT != HH.NOT && hh.calculation.pxX != HH.NOT) {
-					/* Multiple elements hit same pixel */
+						/* Multiple elements hit same pixel */
 
 						this.screen.add(hh);
 
 					} else {
-					/* remove im on rowRe */
+						/* remove im on rowRe */
 						removed++;
 						imIterator.remove();
 					}

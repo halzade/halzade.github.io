@@ -57,7 +57,7 @@ public class PathThread implements Runnable {
 					if (Fractal.ONLY_LONG_ORBITS) {
 						/* for Tiara like fractals */
 
-						/* This is totally unreliable as contains may be on completely different indexes.
+						/* TODO This is totally unreliable as contains may be on completely different indexes. ?
 						// But results seem to be same as not optimized, but twice as fast computed. */
 						if (originPathReT.contains(hh.calculation.reT) && originPathImX.contains(hh.calculation.imX)) {
 							orbitHit++;
@@ -120,18 +120,6 @@ public class PathThread implements Runnable {
 					FractalFiles.addNowDomainEl(el.originReT, el.originImX);
 				}
 			}
-
-			// if (cd != null) {
-			// 	if (iterator > Fractal.ITERATION_MIN
-			// 			&& iterator != Fractal.ITERATION_MAX) {
-			// 		if (iterator < cd.newMin) {
-			// 			cd.newMin = iterator;
-			// 		}
-			// 		if (iterator > cd.newMax) {
-			// 			cd.newMax = iterator;
-			// 		}
-			// 	}
-			// }
 
 			//countPart++;
 			//synchronized (this) {
