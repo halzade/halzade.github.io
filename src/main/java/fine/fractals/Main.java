@@ -17,7 +17,7 @@ public class Main {
 	/**
 	 * Image resolution
 	 */
-	private static final int r = 1000;
+	private static final int r = 800;
 	// private static final int r = 10000;
 
 	/**
@@ -25,7 +25,7 @@ public class Main {
 	 * m x m
 	 * Keep it odd, so that the center point is in the center of a pixel
 	 */
-	private static final int m = 5;
+	private static final int m = 3;
 	// private static final int m = 101;
 
 	/**

@@ -2,7 +2,6 @@ package fine.fractals.math.precise;
 
 import fine.fractals.Main;
 import fine.fractals.Time;
-import fine.fractals.color.things.ScreenColor;
 import fine.fractals.data.FractalFiles;
 import fine.fractals.data.objects.FastList;
 import fine.fractals.fractal.Fractal;
@@ -30,10 +29,6 @@ public class PathThread implements Runnable {
 	}
 
 	public void run() {
-		if (el.isMarked()) {
-			// Element was already calculated. Now is in progress calculation of it's wrapping
-			el.setColor(ScreenColor._MARK_FINISHED);
-		} else {
 //			/* Tested that it is faster if both are ArrayLists (The difference could be in addEscapePathInside) */
 			FastList originPathReT = new FastList();
 			FastList originPathImX = new FastList();
@@ -125,7 +120,6 @@ public class PathThread implements Runnable {
 			//synchronized (this) {
 			//	FractalMachine.calculateProgressPercentage(countPart, countPartAll, partRowT, Application.RESOLUTION_DOMAIN_T, first);
 			//}
-		}
 	}
 
 }

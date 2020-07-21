@@ -1,10 +1,9 @@
 package fine.fractals.engine;
 
 import fine.fractals.Application;
-import fine.fractals.Time;
 import fine.fractals.Main;
+import fine.fractals.Time;
 import fine.fractals.color.things.Palette;
-import fine.fractals.color.things.ScreenColor;
 import fine.fractals.data.objects.Bool;
 import fine.fractals.fractal.Fractal;
 import fine.fractals.fractal.phoenix.Phoenix;
@@ -216,9 +215,7 @@ public abstract class FractalMachine {
 		if (checkDomain(t, x)) {
 			element = mandelbrot[t][x];
 			if (element != null && (element.isActiveAny() || element.isHibernatedFinished())) {
-				if (!ScreenColor._MARK.equals(element.getColor()) && !ScreenColor._MARK_FINISHED.equals(element.getColor())) {
-					element.setActiveRecalculate();
-				}
+				element.setActiveRecalculate();
 			}
 		}
 	}

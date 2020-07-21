@@ -18,13 +18,5 @@ public class ScreenColor {
 	 * For optimization fix
 	 */
 	public static Color _RECALCULATE = new Color(155, 1, 198);
-	/**
-	 * To be calculated as wrapped
-	 */
-	public static Color _MARK = new Color(123, 0, 255);
-	/**
-	 * To be calculated as wrapped: Finished
-	 */
-	public static Color _MARK_FINISHED = new Color(70, 0, 145);
 
 }

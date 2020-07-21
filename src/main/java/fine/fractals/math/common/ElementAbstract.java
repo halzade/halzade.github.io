@@ -13,8 +13,6 @@ public abstract class ElementAbstract {
 	protected Integer valueCorrected;
 	protected State state = State.ActiveNew;
 
-	private boolean marked = false;
-
 	public ElementAbstract() {
 		this.lastIteration = 0;
 		this.valueCorrected = 0;
@@ -146,15 +144,6 @@ public abstract class ElementAbstract {
 
 	public State getState() {
 		return this.state;
-	}
-
-	public void setMarked() {
-		this.marked = true;
-		this.color = ScreenColor._MARK;
-	}
-
-	public boolean isMarked() {
-		return this.marked;
 	}
 
 }
