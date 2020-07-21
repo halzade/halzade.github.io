@@ -1,25 +1,32 @@
 ## Java code to generate Fine Fractals
 
-See index.html for examples of generated Images.
+Some examples of generated Images are at
 
 https://fine-fractals.github.io
 
-# Discover and Name new Fine Fractals!
+<br />
 
+## The code is optimized to produce:
 
-
-
-## The Project is optimized to produce:
-
-#### 1. Images in high resolution with perfect details. 
+## 1. Images in high resolution with perfect details.
  
  The Quality of produced images is limited only by available memory and calculation time.
  
  It is very easy. 
  
- Only edit resolution and calculation multiplier in Main.java
+ Only increase resolution and calculation multiplier in Main.java
 
 
-#### 2. Videos of infinite Fractal ZOOM
+## 2. Videos of infinite Fractal ZOOM
 
- It is also easy but requires a bit of work.
+ It is also easy.
+  
+ Change REPEAT from false to true and see comments in the code.
+
+<br />
+
+ ## Discover and name new Fine Fractals!
+
+ All Mathematic happens in math() method where it is defined in a very simple terms.
+ 
+ See what works. Many combinations produce a Fractal. 
