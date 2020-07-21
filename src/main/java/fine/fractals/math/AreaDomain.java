@@ -250,7 +250,6 @@ public class AreaDomain {
 			/* Add original (ALREADY CALCULATED) element to wrapping for coloring for calculation progress.
 			 * Calculation will be skipped. In PathThread
 			 */
-			// System.out.println("set marked q");
 			elementZero.setMarked();
 			wrapping[index] = elementZero;
 		} else {

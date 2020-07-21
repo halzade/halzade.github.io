@@ -202,7 +202,6 @@ public class Design {
 			/* until there is any color left */
 			while (colorLeft > 0) {
 				colorLeft = coloredValueIntegral.applyPaintR(colorIndexR, colorLeft);
-				// System.out.println("ci: " + colorIndex + ", cl: " + colorLeft);
 				if (colorLeft == 0) {
 					// no color left, switch to next color
 					colorIndexR++;
@@ -218,7 +217,6 @@ public class Design {
 			/* until there is any color left */
 			while (colorLeft > 0) {
 				colorLeft = coloredValueIntegral.applyPaintG(colorIndexG, colorLeft);
-				// System.out.println("ci: " + colorIndex + ", cl: " + colorLeft);
 				if (colorLeft == 0) {
 					// no color left, switch to next color
 					colorIndexG++;
@@ -234,7 +232,6 @@ public class Design {
 			/* until there is any color left */
 			while (colorLeft > 0) {
 				colorLeft = coloredValueIntegral.applyPaintB(colorIndexB, colorLeft);
-				// System.out.println("ci: " + colorIndex + ", cl: " + colorLeft);
 				if (colorLeft == 0) {
 					// no color left, switch to next color
 					colorIndexB++;

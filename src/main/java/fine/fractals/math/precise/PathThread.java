@@ -1,7 +1,7 @@
 package fine.fractals.math.precise;
 
-import fine.fractals.Time;
 import fine.fractals.Main;
+import fine.fractals.Time;
 import fine.fractals.color.things.ScreenColor;
 import fine.fractals.data.FractalFiles;
 import fine.fractals.data.objects.FastList;
@@ -30,14 +30,11 @@ public class PathThread implements Runnable {
 	}
 
 	public void run() {
-
-		// System.out.println(Thread.currentThread().getName() + " (Start) thread = " + myId);
-
 		if (el.isMarked()) {
 			// Element was already calculated. Now is in progress calculation of it's wrapping
 			el.setColor(ScreenColor._MARK_FINISHED);
 		} else {
-			/* Tested that it is faster if both are ArrayLists (The difference could be in addEscapePathInside) */
+//			/* Tested that it is faster if both are ArrayLists (The difference could be in addEscapePathInside) */
 			FastList originPathReT = new FastList();
 			FastList originPathImX = new FastList();
 
@@ -49,7 +46,9 @@ public class PathThread implements Runnable {
 
 			while (hh.quadrance() < Fractal.CALCULATION_BOUNDARY && iterator < Fractal.ITERATION_MAX) {
 
-				/** Magic only here */
+				/*
+				 * Calculation happens only here
+				 */
 				Main.FRACTAL.math(hh, el.originReT, el.originImX);
 
 				/** There are Three possible contains: Domain zoomed, Image, Domain full */
@@ -90,24 +89,6 @@ public class PathThread implements Runnable {
 				}
 			}
 
-			// if (cd != null) {
-			// 	if (iterator > Fractal.ITERATION_MIN) {
-			// 		counter++;
-			// 		cd.newDiverged++;
-			// 		/** For next calculation of dynamic coloring */
-			// 		domainFiltered.add(el);
-			// 	} else {
-			// 		counterNot++;
-			// 	}
-			// }
-
-			// Integer lengthHitsCount = stats.get(iterator);
-			// if (lengthHitsCount != null) {
-			// 	stats.put(iterator, lengthHitsCount + 1);
-			// } else {
-			// 	stats.put(iterator, 1);
-			// }
-
 			boolean pathTest;
 			if (Fractal.ONLY_LONG_ORBITS) {
 				/** Tiara like fractals **/
@@ -131,6 +112,7 @@ public class PathThread implements Runnable {
 					// if (el.getLastIteration() == 0) {
 
 					/* This isn't continuation of unfinished iteration from previous calculation */
+
 					el.setHibernatedFinishedInside();
 
 					design.addEscapePathToSpectraNow(hh, originPathReT, originPathImX);
@@ -155,8 +137,6 @@ public class PathThread implements Runnable {
 			//synchronized (this) {
 			//	FractalMachine.calculateProgressPercentage(countPart, countPartAll, partRowT, Application.RESOLUTION_DOMAIN_T, first);
 			//}
-
-			// System.out.println(Thread.currentThread().getName() + " (End)");//prints thread name
 		}
 	}
 

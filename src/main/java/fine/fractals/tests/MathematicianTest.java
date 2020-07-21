@@ -8,11 +8,7 @@ public class MathematicianTest {
 
 	@Test
 	public void test() {
-		System.out.println("test");
 
-		/*
-		 * init ITERATION_MAX = 180_000
-		 */
 		new Tiara();
 
 		final Mathematician mathematician = new Mathematician();

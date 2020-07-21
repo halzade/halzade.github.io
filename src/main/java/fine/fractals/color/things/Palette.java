@@ -66,43 +66,16 @@ public abstract class Palette {
 		int gDif = to.getGreen() - gFrom;
 		int bDif = to.getBlue() - bFrom;
 
-		d(rFrom + "**" + to.getRed(), debug);
-		d(gFrom + "**" + to.getGreen(), debug);
-		d(bFrom + "**" + to.getBlue(), debug);
-
 		final double maxDif = a(max(rDif, gDif, bDif));
-
-		d("maxDif " + maxDif, debug);
-		d("rDif " + rDif, debug);
-		d("gDif " + gDif, debug);
-		d("bDif " + bDif, debug);
 
 		double rStep = ((double) rDif / maxDif);
 		double gStep = ((double) gDif / maxDif);
 		double bStep = ((double) bDif / maxDif);
 
-		d("rStep " + rStep, debug);
-		d("gStep " + gStep, debug);
-		d("bStep " + bStep, debug);
-
 		double d = 0;
 		double v = 0;
 		double value = 0;
 		int i = 0;
-
-		//if (rDif < 0) {
-		//	rStep *= (-1);
-		//}
-		//if (gDif < 0) {
-		//	gStep *= (-1);
-		//}
-		//if (bDif < 0) {
-		//	bStep *= (-1);
-		//}
-
-		d(rDif + "==" + rStep, debug);
-		d(gDif + "==" + gStep, debug);
-		d(bDif + "==" + bStep, debug);
 
 		int rr = 0;
 		int gg = 0;
@@ -267,22 +240,16 @@ public abstract class Palette {
 
 
 	public void update3(int[] maxValueScr, int minValueScr[]) {
-
-		System.out.println("update...");
 		if (currentMaxValue3 == null) {
 			currentMaxValue3 = new int[3];
 			currentMaxValue3[0] = maxValueScr[0];
 			currentMaxValue3[1] = maxValueScr[1];
 			currentMaxValue3[2] = maxValueScr[2];
 			currentMinValue3 = new int[3];
-			System.out.println("updated.a.. " + currentMinValue3);
 			currentMinValue3[0] = minValueScr[0];
 			currentMinValue3[1] = minValueScr[1];
 			currentMinValue3[2] = minValueScr[2];
-			System.out.println("updated.b.. " + currentMinValue3);
 		}
-
-		System.out.println("updated.c.. " + currentMinValue);
 	}
 
 	private static double a(double v) {
@@ -312,9 +279,4 @@ public abstract class Palette {
 		}
 	}
 
-	private void d(String str, boolean debug) {
-		if (debug) {
-			System.out.println(str);
-		}
-	}
 }

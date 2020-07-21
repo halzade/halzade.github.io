@@ -1,8 +1,8 @@
 package fine.fractals.math.mandelbrot;
 
 import fine.fractals.Application;
-import fine.fractals.Time;
 import fine.fractals.Main;
+import fine.fractals.Time;
 import fine.fractals.color.things.ScreenColor;
 import fine.fractals.data.objects.Bool;
 import fine.fractals.engine.FractalMachine;
@@ -62,216 +62,6 @@ public class MandelbrotDomain {
 			}
 		}
 	}
-
-
-	/*
-	 * This is called After zoom in
-	 */
-//	public void domainForThisZoom() {
-//
-//		if (Venture.RESOLUTION_MULTIPLIER > 1) {
-//			throw new RuntimeException("Domain zoom not ready for zoom with resolution multiplier");
-//		}
-//		if (Fractal.OPTIMIZE_SYMMETRY) {
-//			throw new RuntimeException("Can't zoom with optimize symmetry");
-//		}
-//
-//
-//		if (areaDomain.sizeImX < 0.000000000000005) {
-//			time.total("STOP CALCULATION domain: " + areaDomain.sizeImX);
-//			time.total("STOP CALCULATION image: " + areaImage.sizeImX);
-//			Application.REPEAT = false;
-//		}
-//
-//		/**
-//		 * Scan area domain elements (old positions from previous calculation) to be -
-//		 * moved to new positions (remembered) or skipped the calculation for them.
-//		 */
-//		int value;
-//		int valuesRemembered = 0;
-//		int newHibernatedBlack = 0;
-//		long allValues = 0;
-//		Element element;
-//		for (int t = 0; t < Application.RESOLUTION_DOMAIN_T; t++) {
-//			for (int x = 0; x < Application.RESOLUTION_DOMAIN_X; x++) {
-//
-//				element = elementsScreen[t][x];
-//				if (areaDomain.contains(element.originReT, element.originImX)) {
-//					/* Move elements to new coordinates */
-//					if (element.isHibernatedBlack_Neighbour()) {
-//						element.setHibernatedBlack();
-//					} else if (!element.isHibernatedBlack()
-//							&& !element.isHibernatedBlack_Neighbour()
-//							&& !element.isFixed()
-//							&& FractalMachine.isVeryDeepBlack(t, x, elementsScreen)) {
-//						element.setHibernatedBlack();
-//						newHibernatedBlack++;
-//					} else {
-//						if (element.isActiveNew()) {
-//							element.setActiveMoved();
-//						}
-//					}
-//					elementsToRemember.add(element);
-//					value = element.getValue();
-//					if (value != 0) {
-//						allValues += value;
-//						valuesRemembered++;
-//					}
-//				}
-//				/* clear color set for debug */
-//				element.setColor(null);
-//			}
-//		}
-//
-//		time.now("newHibernatedBlack " + newHibernatedBlack);
-//		time.now("valuesRemembered " + valuesRemembered);
-//		time.now("elementsToRemember " + elementsToRemember.size());
-//
-//		if (valuesRemembered != 0) {
-//			time.now("Average value:  " + (allValues / valuesRemembered));
-//		} else {
-//			time.red("Average value: valuesRemembered is ZERO");
-//		}
-//		time.now("New black:      " + newHibernatedBlack);
-//
-//		/**
-//		 * Delete all elements assigned to screen coordinates.
-//		 * Some are remembered and will be moved.
-//		 */
-//		for (int t = 0; t < Application.RESOLUTION_DOMAIN_T; t++) {
-//			for (int x = 0; x < Application.RESOLUTION_DOMAIN_X; x++) {
-//				elementsScreen[t][x] = null;
-//			}
-//		}
-//
-//		/**
-//		 * Add remembered elements to their new position (after zoom) for new calculation
-//		 */
-//		int conflictsFound = 0;
-//		int newPositionT;
-//		int newPositionX;
-//		Element done;
-//
-//		int addedToNewPositions = 0;
-//
-//		HH hh = new HH();
-//
-//		LinkedList<Element>[][] conflicts = new LinkedList[Application.RESOLUTION_DOMAIN_T][Application.RESOLUTION_DOMAIN_X];
-//		for (Element el : elementsToRemember) {
-//			/* Get screen position if inside Area domain */
-//			if (areaDomain.domainToScreenCarry(hh, el.originReT, el.originImX)) {
-//
-//				newPositionT = hh.calculation.pxT;
-//				newPositionX = hh.calculation.pxX;
-//
-//				if (newPositionT != HH.NOT
-//						&& newPositionX != HH.NOT) {
-//					done = elementsScreen[newPositionT][newPositionX];
-//					if (done != null) {
-//						/* Conflict */
-//						if (conflicts[newPositionT][newPositionX] == null) {
-//							conflicts[newPositionT][newPositionX] = new LinkedList<>();
-//						}
-//						conflictsFound++;
-//						// el.setColor(Color.BLACK);
-//						conflicts[newPositionT][newPositionX].add(el);
-//					} else {
-//						/* OK; no conflict */
-//						elementsScreen[newPositionT][newPositionX] = el;
-//						addedToNewPositions++;
-//					}
-//				}
-//			}
-//		}
-//
-//		time.now("AddedToNewPositions " + addedToNewPositions);
-//
-//		time.now("FIX CONFLICTS " + conflictsFound);
-//		conflictsResolved = 0;
-//		LinkedList conflictsOnPixel;
-//		/** Resolve found conflicts */
-//		/** More Elements hit same pixel after zoom */
-//		for (int t = 0; t < Application.RESOLUTION_DOMAIN_T; t++) {
-//			for (int x = 0; x < Application.RESOLUTION_DOMAIN_X; x++) {
-//				conflictsOnPixel = conflicts[t][x];
-//				if (conflictsOnPixel != null) {
-//
-//		 			/* Add the initial conflict */
-//					element = elementsScreen[t][x];
-//					//noinspection unchecked
-//					conflictsOnPixel.add(element);
-//
-//		 			/* Find best match for the pixel with conflicts */
-//					//noinspection unchecked
-//					elementsScreen[t][x] = bestMatch(hh, t, x, conflictsOnPixel);
-//
-//		 			/* Find best match for pixels around */
-//					if (!conflictsOnPixel.isEmpty()) {
-//						//noinspection unchecked
-//						dropBestMatchToEmptyNeighbour(hh, t, x, conflictsOnPixel);
-//					}
-//					if (!conflictsOnPixel.isEmpty()) {
-//						//noinspection unchecked
-//						dropBestMatchToEmptyNeighbour(hh, t, x, conflictsOnPixel);
-//					}
-//					if (!conflictsOnPixel.isEmpty()) {
-//						//noinspection unchecked
-//						dropBestMatchToEmptyNeighbour(hh, t, x, conflictsOnPixel);
-//					}
-//					conflicts[t][x] = null;
-//				}
-//			}
-//		}
-//
-//		time.now("CONFLICTS FOUND / RESOLVED: " + conflictsFound + " / " + conflictsResolved);
-//
-//	   /*
-//		 * Create new elements on positions where nothing was moved to
-//	    */
-//		int createdNewElements = 0;
-//		Element newElement;
-//		for (int t = 0; t < Application.RESOLUTION_DOMAIN_T; t++) {
-//			for (int x = 0; x < Application.RESOLUTION_DOMAIN_X; x++) {
-//				if (elementsScreen[t][x] == null) {
-//					newElement = new Element(areaDomain.screenToDomainReT(t), areaDomain.screenToDomainImX(x));
-//					elementsScreen[t][x] = newElement;
-//					createdNewElements++;
-//				}
-//			}
-//		}
-//		time.now("createdNewElements " + createdNewElements);
-//
-//		/**
-//		 * Calculation for some positions should be skipped as they are to far away form any divergent position. (They are deep black)
-//		 * Skipp also calculation for their neighbours. (Black neighbour)
-//		 */
-//		final int r = 3;
-//		final int rr = r * r;
-//		int markedAsDeepBlack = 0;
-//		for (int i = 0; i < Application.RESOLUTION_DOMAIN_T; i++) {
-//			for (int j = 0; j < Application.RESOLUTION_DOMAIN_X; j++) {
-//				element = elementsScreen[i][j];
-//				if (element.isHibernatedBlack()) {
-//					/* Set all element's in neighborhood as deep black */
-//					for (int t = -r; t < r; t++) {
-//						for (int x = -r; x < r; x++) {
-//							if ((t * t) + (x * x) < rr) {
-//								int t1 = i + t;
-//								int x1 = j + x;
-//								// y = 0;
-//								// z = 0;
-//								FractalMachine.setAsDeepBlack(t1, x1, elementsScreen);
-//								markedAsDeepBlack++;
-//							}
-//						}
-//					}
-//				}
-//			}
-//		}
-//
-//		time.now("markedAsDeepBlack:   " + markedAsDeepBlack);
-//		elementsToRemember.clear();
-//	}
 
 	synchronized ArrayList<Element> fetchDomainPart() {
 		// if (Venture.DO_FILES && FractalFiles.existsDomain()) {
@@ -545,7 +335,7 @@ public class MandelbrotDomain {
 			time.now("mask don't");
 		}
 	}
-	
+
 	/*-----------------------------------------------------------------------------*/
 
 
@@ -554,12 +344,12 @@ public class MandelbrotDomain {
 	 */
 	public void domainForThisZoom() {
 
-		
-		
-        /*
+
+
+		/*
 		 * Scan area elements (old positions from previous calculation) to be -
-         * moved to new positions (remembered) or skipped calculation for them.
-         */
+		 * moved to new positions (remembered) or skipped calculation for them.
+		 */
 		int value;
 		int valuesRemembered = 0;
 		int newHibernatedBlack = 0;
@@ -596,10 +386,10 @@ public class MandelbrotDomain {
 		}
 
 
-        /*
+		/*
 		 * Delete all elements assigned to screen coordinates.
-         * Some are remembered and will be moved.
-         */
+		 * Some are remembered and will be moved.
+		 */
 		for (int yy = 0; yy < Application.RESOLUTION_DOMAIN_X; yy++) {
 			for (int xx = 0; xx < Application.RESOLUTION_DOMAIN_T; xx++) {
 				elementsScreen[xx][yy] = null;
@@ -608,7 +398,7 @@ public class MandelbrotDomain {
 
 		/*
 		 * Add remembered elements to their new position for new calculation
-         */
+		 */
 		int conflictsFound = 0;
 		Integer newPositionT;
 		Integer newPositionX;
@@ -652,14 +442,14 @@ public class MandelbrotDomain {
 			for (int xx = 0; xx < Application.RESOLUTION_DOMAIN_T; xx++) {
 				conflictsOnPixel = conflicts[xx][yy];
 				if (conflictsOnPixel != null) {
-					
+
 					/* Add the initial conflict */
 					element = elementsScreen[xx][yy];
 					conflictsOnPixel.add(element);
-					
+
 					/* Find best match for the pixel with conflicts */
 					elementsScreen[xx][yy] = bestMatch(hh, xx, yy, conflictsOnPixel);
-					
+
 					/* Find best match for pixels around */
 					if (!conflictsOnPixel.isEmpty()) {
 						dropBestMatchToEmptyNeighbour(hh, xx, yy, conflictsOnPixel);
@@ -675,9 +465,9 @@ public class MandelbrotDomain {
 			}
 		}
 
-        /*
+		/*
 		 * Create new elements on positions where nothing was moved to
-         */
+		 */
 		int createdNewElements = 0;
 		Element newElement;
 		for (int yy = 0; yy < Application.RESOLUTION_DOMAIN_X; yy++) {
@@ -685,18 +475,17 @@ public class MandelbrotDomain {
 				if (elementsScreen[xx][yy] == null) {
 					areaDomain.screenToDomainCarry(hh, xx, yy);
 					newElement = new Element(hh.calculation.reT, hh.calculation.imX);
-					// newElement.setColor(Color.CYAN);
 					elementsScreen[xx][yy] = newElement;
 					createdNewElements++;
 				}
 			}
 		}
-		
-        /*
+
+		/*
 		 * Calculation for some positions should be skipped as they are to far away form any divergent position. (They are deep black)
-         * Skipp also calculation for their neighbours. (Black neighbour)
-         * Try to guess value of new elements if all values around them are the very similar.
-         */
+		 * Skipp also calculation for their neighbours. (Black neighbour)
+		 * Try to guess value of new elements if all values around them are the very similar.
+		 */
 		for (int yy = 0; yy < Application.RESOLUTION_DOMAIN_X; yy++) {
 			for (int xx = 0; xx < Application.RESOLUTION_DOMAIN_T; xx++) {
 				element = elementsScreen[xx][yy];

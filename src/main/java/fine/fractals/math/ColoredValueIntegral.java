@@ -47,9 +47,9 @@ public class ColoredValueIntegral {
 	}
 
 	public void finalize(HashMap<Integer, Color> finalColorsR, HashMap<Integer, Color> finalColorsG, HashMap<Integer, Color> finalColorsB) {
-		ArrayList<Integer> valuesR = new ArrayList(this.valueIntegralWithColorLimitsR.keySet());
-		ArrayList<Integer> valuesG = new ArrayList(this.valueIntegralWithColorLimitsG.keySet());
-		ArrayList<Integer> valuesB = new ArrayList(this.valueIntegralWithColorLimitsB.keySet());
+		ArrayList<Integer> valuesR = new ArrayList<>(this.valueIntegralWithColorLimitsR.keySet());
+		ArrayList<Integer> valuesG = new ArrayList<>(this.valueIntegralWithColorLimitsG.keySet());
+		ArrayList<Integer> valuesB = new ArrayList<>(this.valueIntegralWithColorLimitsB.keySet());
 
 		for (Integer val : valuesR) {
 			Pivot p = this.valueIntegralWithColorLimitsR.get(val);
@@ -116,7 +116,6 @@ public class ColoredValueIntegral {
 			this.amount = amount;
 			this.colorIndex = colorIndex;
 		}
-
 	}
 
 	private class Pivot {
@@ -186,20 +185,20 @@ public class ColoredValueIntegral {
 		Collections.sort(designValuesG);
 		Collections.sort(designValuesB);
 
-		System.out.println("R - All values to paint: " + designValuesR.size());
-		System.out.println("R - smallest: " + designValuesR.get(0));
-		System.out.println("R - largest:  " + designValuesR.get(designValuesR.size() - 1));
-		System.out.println("R - All colors: " + Main.colorPalette.colorResolutionR());
+		time.now("R - All values to paint: " + designValuesR.size());
+		time.now("R - smallest: " + designValuesR.get(0));
+		time.now("R - largest:  " + designValuesR.get(designValuesR.size() - 1));
+		time.now("R - All colors: " + Main.colorPalette.colorResolutionR());
 
-		System.out.println("G - All values to paint: " + designValuesG.size());
-		System.out.println("G - smallest: " + designValuesG.get(0));
-		System.out.println("G - largest:  " + designValuesG.get(designValuesG.size() - 1));
-		System.out.println("G - All colors: " + Main.colorPalette.colorResolutionG());
+		time.now("G - All values to paint: " + designValuesG.size());
+		time.now("G - smallest: " + designValuesG.get(0));
+		time.now("G - largest:  " + designValuesG.get(designValuesG.size() - 1));
+		time.now("G - All colors: " + Main.colorPalette.colorResolutionG());
 
-		System.out.println("B - All values to paint: " + designValuesB.size());
-		System.out.println("B - smallest: " + designValuesB.get(0));
-		System.out.println("B - largest:  " + designValuesB.get(designValuesB.size() - 1));
-		System.out.println("B - All colors: " + Main.colorPalette.colorResolutionB());
+		time.now("B - All values to paint: " + designValuesB.size());
+		time.now("B - smallest: " + designValuesB.get(0));
+		time.now("B - largest:  " + designValuesB.get(designValuesB.size() - 1));
+		time.now("B - All colors: " + Main.colorPalette.colorResolutionB());
 	}
 
 
@@ -424,7 +423,6 @@ public class ColoredValueIntegral {
 	private void verify() {
 		/* ========================================== */
 
-		System.out.println("------------------------------------------");
 		ArrayList<Integer> valuesR = new ArrayList(this.valueIntegralWithColorLimitsR.keySet());
 		ArrayList<Integer> valuesG = new ArrayList(this.valueIntegralWithColorLimitsG.keySet());
 		ArrayList<Integer> valuesB = new ArrayList(this.valueIntegralWithColorLimitsB.keySet());
@@ -448,17 +446,15 @@ public class ColoredValueIntegral {
 					paintUsedR.put(c.colorIndex, c.amount);
 				}
 			}
-			System.out.println(p.designValue + "(" + p.valuePixelCount + " = " + paintedBy + "), 0=" + p.needsToBePainted + ", " + p.appliedColors.size() + "{" + usedColors(p.appliedColors) + "}" + usedPaint(p.appliedColors));
+			time.now(p.designValue + "(" + p.valuePixelCount + " = " + paintedBy + "), 0=" + p.needsToBePainted + ", " + p.appliedColors.size() + "{" + usedColors(p.appliedColors) + "}" + usedPaint(p.appliedColors));
 			Assert.assertEquals(p.valuePixelCount, paintedBy);
 			Assert.assertEquals(0, p.needsToBePainted);
 		}
 		for (int ind = 0; ind < paintUsedR.size(); ind++) {
-			System.out.println("colorR: " + ind + ":" + paintUsedR.get(ind));
+			time.now("colorR: " + ind + ":" + paintUsedR.get(ind));
 			Assert.assertEquals(paintUsedR.get(ind), fullColoringR);
 		}
 		Assert.assertEquals(paintUsedR.size(), Main.colorPalette.colorResolutionR());
-		System.out.println("------------------------------------------");
-
 
 		for (Integer val : valuesG) {
 			Pivot p = this.valueIntegralWithColorLimitsG.get(val);
@@ -472,17 +468,15 @@ public class ColoredValueIntegral {
 					paintUsedG.put(c.colorIndex, c.amount);
 				}
 			}
-			System.out.println(p.designValue + "(" + p.valuePixelCount + " = " + paintedBy + "), 0=" + p.needsToBePainted + ", " + p.appliedColors.size() + "{" + usedColors(p.appliedColors) + "}" + usedPaint(p.appliedColors));
+			time.now(p.designValue + "(" + p.valuePixelCount + " = " + paintedBy + "), 0=" + p.needsToBePainted + ", " + p.appliedColors.size() + "{" + usedColors(p.appliedColors) + "}" + usedPaint(p.appliedColors));
 			Assert.assertEquals(p.valuePixelCount, paintedBy);
 			Assert.assertEquals(0, p.needsToBePainted);
 		}
 		for (int ind = 0; ind < paintUsedG.size(); ind++) {
-			System.out.println("colorG: " + ind + ":" + paintUsedG.get(ind));
+			time.now("colorG: " + ind + ":" + paintUsedG.get(ind));
 			Assert.assertEquals(paintUsedG.get(ind), fullColoringG);
 		}
 		Assert.assertEquals(paintUsedG.size(), Main.colorPalette.colorResolutionG());
-		System.out.println("------------------------------------------");
-
 
 		for (Integer val : valuesB) {
 			Pivot p = this.valueIntegralWithColorLimitsB.get(val);
@@ -496,16 +490,15 @@ public class ColoredValueIntegral {
 					paintUsedB.put(c.colorIndex, c.amount);
 				}
 			}
-			System.out.println(p.designValue + "(" + p.valuePixelCount + " = " + paintedBy + "), 0=" + p.needsToBePainted + ", " + p.appliedColors.size() + "{" + usedColors(p.appliedColors) + "}" + usedPaint(p.appliedColors));
+			time.now(p.designValue + "(" + p.valuePixelCount + " = " + paintedBy + "), 0=" + p.needsToBePainted + ", " + p.appliedColors.size() + "{" + usedColors(p.appliedColors) + "}" + usedPaint(p.appliedColors));
 			Assert.assertEquals(p.valuePixelCount, paintedBy);
 			Assert.assertEquals(0, p.needsToBePainted);
 		}
 		for (int ind = 0; ind < paintUsedB.size(); ind++) {
-			System.out.println("color: " + ind + ":" + paintUsedB.get(ind));
+			time.now("color: " + ind + ":" + paintUsedB.get(ind));
 			Assert.assertEquals(paintUsedB.get(ind), fullColoringB);
 		}
 		Assert.assertEquals(paintUsedB.size(), Main.colorPalette.colorResolutionB());
-		System.out.println("------------------------------------------");
 	}
 
 	private String usedColors(ArrayList<Coloring> appliedColors) {

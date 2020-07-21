@@ -22,17 +22,12 @@ public class Mathematician {
 
 		INIT_MAX = Fractal.ITERATION_MAX;
 
-		System.out.println("INIT_MAX " + INIT_MAX);
-
 		if (initiated) {
 			throw new RuntimeException("Mathematician already initialized!");
 		}
 
 		synchronized (Mathematician.class) {
 			if (!initiated) {
-
-				System.out.println();
-
 				initPrimes();
 				initFibonaci();
 				initSquares();
@@ -53,8 +48,6 @@ public class Mathematician {
 
 	private static void initFibonaci() {
 
-		System.out.println("initFibonaci " + INIT_MAX);
-
 		FIBONACCI = new HashSet<>();
 
 		int a = 0;
@@ -62,17 +55,13 @@ public class Mathematician {
 		int sum;
 
 		while (b <= INIT_MAX) {
-
 			sum = a + b;
 
-			System.out.println(sum);
 			FIBONACCI.add(sum);
 
 			a = b;
 			b = sum;
 		}
-
-		System.out.println("initFibonaci DONE");
 	}
 
 	private static void initPerfectNumbers() {

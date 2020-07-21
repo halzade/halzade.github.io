@@ -44,7 +44,6 @@ public class UIKeyDispatcher implements KeyEventDispatcher {
 		}
 
 		capsLockDown = Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK);
-		System.out.println("capsLockDown " + capsLockDown);
 
 		return false;
 	}
