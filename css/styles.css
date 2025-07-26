@@ -1,0 +1,66 @@
+body {
+    width: 100%;
+    line-height: 1.4;
+    alignment: center;
+    display: block;
+    margin:0;
+    padding:0;
+}
+
+img {
+    width: 800px;
+    height: 800px;
+    display: inline-block;
+}
+
+p, h1 {
+    display: block;
+    width: 1200px;
+    font: 30px "Courier New", monospace;
+}
+
+a {
+    display: inline-block;
+    width: 800px;
+}
+
+div {
+    margin: 0;
+    padding: 50px;
+    width: 100%;
+    alignment: center;
+    display: block;
+}
+
+.page {
+    padding: 0;
+}
+
+h1 {
+    font-size: 42px;
+}
+
+.light {
+    background: #DDD;
+}
+
+.dark {
+    background: #BBB;
+}
+
+.black {
+    background: #000;
+    color: #BBB;
+}
+
+.contact {
+    position: absolute;
+    right: 30px;
+    padding: 0;
+    text-align: left;
+    width: 300px;
+}
+
+.contact-parent {
+    height: 150px;
+}
