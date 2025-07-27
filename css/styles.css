@@ -75,3 +75,7 @@ h1 {
 .contact-parent {
     height: 150px;
 }
+
+.hide {
+    display: none;
+}
