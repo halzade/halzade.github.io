@@ -7,7 +7,7 @@ body {
     padding:0;
 }
 
-img {
+a img {
     width: 800px;
     height: 800px;
     display: inline-block;
@@ -30,6 +30,17 @@ div {
     width: 100%;
     alignment: center;
     display: block;
+}
+
+.content {
+    width: 500px;
+    font-size: 28pt;
+    display: inline-block;
+
+}
+
+.text {
+    font: 32px "Courier New", monospace;
 }
 
 .page {
