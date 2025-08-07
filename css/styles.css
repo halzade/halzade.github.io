@@ -26,21 +26,32 @@ a {
 
 div {
     margin: 0;
-    padding: 50px;
+    padding-left: 50px;
+    padding-bottom: 20px;
+    padding-top: 20px;
     width: 100%;
     alignment: center;
     display: block;
 }
 
 .content {
-    width: 500px;
+    width: 560px;
     font-size: 28pt;
     display: inline-block;
+    padding-bottom: 0;
+}
 
+.content-right {
+    display: inline-block;
+    width: 100px;
 }
 
 .text {
     font: 32px "Courier New", monospace;
+}
+
+.quote {
+    font-size: 40px;
 }
 
 .page {
@@ -51,17 +62,29 @@ h1 {
     font-size: 42px;
 }
 
-.light {
-    background: #DDD;
+.dark {
+    background: black;
+    color: white;
 }
 
-.dark {
-    background: #BBB;
+.light {
+    background: white;
+    color: black;
+}
+
+.red {
+    background: black;
+    color: red;
+}
+
+.blue {
+    background: #1B2E91;
+    color: white;
 }
 
 .black {
-    background: #000;
-    color: #BBB;
+    background: black;
+    color: white;
 }
 
 .contact {
